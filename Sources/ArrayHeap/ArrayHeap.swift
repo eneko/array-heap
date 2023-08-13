@@ -99,7 +99,7 @@ extension Array where Element: Comparable {
             child = rightChild
         }
 
-        if !comparator(self[parent], self[child]) {
+        if !comparator(self[parent], self[child]) && self[parent] != self[child] {
             swapAt(parent, child)
             sink(child, comparator: comparator)
         }
@@ -108,7 +108,7 @@ extension Array where Element: Comparable {
     private mutating func bubbleUp(_ child: Int, comparator: (Element, Element) -> Bool) {
         guard child > 0 else { return }
         let parent = (child - 1) / 2
-        if !comparator(self[parent], self[child]) {
+        if !comparator(self[parent], self[child]) && self[parent] != self[child] {
             swapAt(parent, child)
             bubbleUp(parent, comparator: comparator)
         }

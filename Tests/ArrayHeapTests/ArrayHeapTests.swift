@@ -63,6 +63,14 @@ final class ArrayHeapTests: XCTestCase {
         }
     }
 
+    func testEqualItems() {
+        var numbers = Array(repeating: 10, count: 100)
+        numbers.maxHeapify()
+        XCTAssertEqual(numbers.heapTop, 10)
+        numbers.maxHeapInsert(100)
+        XCTAssertEqual(numbers.heapTop, 100)
+    }
+
     func testReadme1() {
         var heap = [Int]()
         heap.minHeapInsert(2)
